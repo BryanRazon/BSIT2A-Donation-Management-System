@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Donation Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: white;
+      text-align: center;
+    }
+
+    header {
+      background: #632828;
+      padding: 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .donation-box {
+      background: white;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-toggle {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .btn-toggle button {
+      width: 48%;
+      background: #2c672c;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .btn-toggle button:hover {
+      background: #115011;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      width: 400px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      text-align: left;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: #d9d9d9;
+      color: #9e3f3f;
+      border: none;
+      padding: 10px 30px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, select, textarea, button.confirm-btn {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .confirm-btn {
+      background: #2c672c;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .confirm-btn:hover {
+      background: #115011;
+    }
+
+  .image-text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Donate</a></li>
+        <li><a href="#">Solutions</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+      <img src="logo.jpg" alt="Logo" class="logo">
+    </nav>
+  </header>
+
+  <main>
+    <section class="donation-box" id="choiceBox">
+      <section class="image-text">
+      <img src="#" alt="image">
+      <h3>Description</h3>
+    </section>
+    <h1>Complete Your Donation</h1>
+    <h2>Type of Donation</h2>
+
+      <section class="btn-toggle">
+        <button onclick="openForm('monetary')">Monetary Donation</button>
+        <button onclick="openForm('inkind')">In-Kind Donation</button>
+      </section>
+    </section>
+  </main>
+
+  <section class="modal" id="donationModal">
+    <section class="modal-content" id="modalContent">
+      <button class="close-btn" onclick="closeForm()">←</button><br><br>
+
+      <form id="monetaryForm" style="display:none;">
+        <h2>Monetary Donation</h2>
+        <label for="amount">Enter Amount</label>
+        <input type="number" id="amount" name="amount" placeholder="e.g. 100">
+
+        <label for="paymentMode">Select Mode of Payment</label>
+        <select id="paymentMode" name="paymentMode">
+          <option value="">--Choose--</option>
+          <option value="credit">Credit Card</option>
+          <option value="gacsh">Gcash</option>
+          <option value="paypal">Paypal</option>
+          <option value="bank">Bank Transfer</option>
+        </select>
+
+        <label for="paymentDetails">Payment Details</label>
+        <input type="text" id="paymentDetails" name="paymentDetails" placeholder="Enter details">
+
+        <label for="message">Optional Message</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+
+        <button type="submit" class="confirm-btn">Confirm</button>
+      </form>
+
+      <form id="inkindForm" style="display:none;">
+        <h2>In-Kind Donation</h2>
+        <label for="itemType">Type of Item</label>
+        <input type="text" id="itemType" name="itemType" placeholder="e.g. Clothes">
+
+        <label for="quantity">Quantity of Item</label>
+        <input type="number" id="quantity" name="quantity" placeholder="e.g. 10">
+
+        <label for="delivery">How would you like to send your Donation?</label>
+        <select id="delivery" name="delivery">
+          <option value="">--Choose--</option>
+          <option value="pickup">Walk-in (drop off in person)</option>
+          <option value="dropoff">Delivery (have it picked up or shipped)</option>
+        </select>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com">
+
+        <label for="inkindMessage">Optional Message</label>
+        <textarea id="inkindMessage" name="inkindMessage" rows="3"></textarea>
+
+        <button type="submit" class="confirm-btn">Confirm</button>
+      </form>
+    </section>
+</section>
+
+  <script>
+  function openForm(type) {
+
+    document.getElementById('choiceBox').style.display = 'none';
+    document.getElementById('donationModal').style.display = 'flex';
+    document.getElementById('monetaryForm').style.display = 'none';
+    document.getElementById('inkindForm').style.display = 'none';
+
+    if (type === 'monetary') {
+      document.getElementById('monetaryForm').style.display = 'block';
+    } else {
+      document.getElementById('inkindForm').style.display = 'block';
+    }
+  }
+  function closeForm() {
+    document.getElementById('donationModal').style.display = 'none';
+    document.getElementById('choiceBox').style.display = 'block';
+  }
+  
+</script>
+</body>
+</html>
