@@ -54,7 +54,7 @@ section {
   background: #ffffff;
   padding: 1rem;
   border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(1, 1, 1, 0.1);
   text-align: center;
 }
 
@@ -86,22 +86,31 @@ button:hover {
   height: auto;
 }
 
-
+.logout-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2c672c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.logout-btn:hover {
+  background: #115011;
+}
   </style>
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="#">Donate</a></li>
-        <li><a href="#">Solutions</a></li>
+        <li><a href="home.html">Donate</a></li>
         <li><a href="#">Community</a></li>
-        <li><a href="#">Resources</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Link</a></li>
+        <li><a href="#">About</a></li>
       </ul>
-      <img src="logo.jpg" alt="img" class="logo">
+      <img src="logo.jpg" alt="Logo" class="logo">
     </nav>
   </header>
 
@@ -110,29 +119,40 @@ button:hover {
   <main>
     <section>
       <h2>Donation 1</h2>
-      <figure>Image</figure>
-      <p>Description for donation 1 goes here.</p>
-      <a href="donateForm.html"><button>Donate</button></a>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Nm0lwcsZ_p-UE5SSBNSTmsndIRJlsR-nGA&s" alt="image">
+      <p>Donate - You can help even with small amount.</p>
+      <a href="form.html"><button>Donate</button></a>
       <p><strong>Total Raised: $$</strong></p>
     </section>
 
     <section>
       <h2>Donation 2</h2>
-      <figure>Image</figure>
-      <p>Description for donation 2 goes here.</p>
-      <a href="donateForm.html"><button>Donate</button></a>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Nm0lwcsZ_p-UE5SSBNSTmsndIRJlsR-nGA&s" alt="image">
+      <p>Donate - You can help even with small amount.</p>
+      <a href="form.html"><button>Donate</button></a>
       <p><strong>Total Raised: $$</strong></p>
     </section>
 
     <section>
       <h2>Donation 3</h2>
-      <figure>Image</figure>
-      <p>
-        Description
-      </p>
-      <a href="donateForm.html"><button>Donate</button></a>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Nm0lwcsZ_p-UE5SSBNSTmsndIRJlsR-nGA&s" alt="image">
+      <p>Donate - You can help even with small amount.</p>
+      <a href="form.html"><button>Donate</button></a>
       <p><strong>Total Raised: $$</strong></p>
     </section>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
   </main>
+
+  <script>
+    function logout() {
+    const ok = confirm("Are you sure you want to logout?");
+    if (!ok) return;
+
+    window.location.href = "index.html";
+}
+
+  </script>
 </body>
 </html>
