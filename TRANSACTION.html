@@ -1,0 +1,371 @@
+<html>
+    <head>
+        <title>
+        Transaction Menu
+    </title>
+    <meta  name="viewPort" content="width=device - width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Lato" , sans-serif;
+        }
+
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: lightgray;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3;
+        }
+
+
+        .sidenav a:hover {
+            color:#f1f1f1;
+        }
+
+
+        .sidenav .closebtn {
+            position:absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50;
+        }
+
+
+        @media screen and (max-height: 450px){
+            .sidenav {padding-top: 15;}
+            .sidenav a{font-size: 18px;}
+        }
+        </style>
+    </head>
+
+
+    <body>
+        <div id="MySideNav" class="sidenav">
+            <a href="javscript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="adminside.html"> HOME</a>
+            <a href="OVERVIEW.html"> OVERVIEW </a>
+            <a href="TRANSACTION.html"> TRANSACTION </a>
+            <a href="MESSAGES.html"> MESSAGES </a>
+            <a href="index.html"> Logout </a>
+        </div>
+         
+        <h2> Admin side / Manager side </h2>
+
+
+       
+        <span style="font: 30px;cursor: pointer;" onclick="openNav()">&#9776; OPEN</span>
+
+
+        <script>
+            function openNav() {
+                document.getElementById("MySideNav").style.width = "250";
+            }
+
+
+            function closeNav() {
+                document.getElementById("MySideNav").style.width="0";
+            }
+        </script>
+            <center><h2><p> TRANSACTION  </p> </h2></center>
+            <!-- this is just an arrow sign that takes you back S-->
+            <p>
+                <h2><button onclick= "history.back()"">←</button></h2
+            </p>
+
+
+    </body>
+    <title>
+        SIDE BAR ADMIN SIDE
+    </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Donation Record Sheet
+    </title>
+    <style>
+        body {
+
+
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+
+
+
+         h2 {
+
+
+            text-align: center;
+             margin-top: 30px;
+        }
+
+
+
+
+        table {
+
+
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #bfbfbf;
+        }
+
+
+
+
+        th, td {
+
+
+            border: 2px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+
+
+
+        th {
+
+
+            background-color: #999;
+            font-weight: bold;
+        }
+
+
+        td {
+
+
+            background-color: #d9d9d9;
+        }
+
+
+        .action-btn {
+            padding: 6px 14px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+
+        .edit-btn {
+            background-color: #666;
+            color: white;
+            margin-right: 5px;
+        }
+
+
+        .delete-btn {
+            background-color: #d22b2b;
+            color: white;
+        }
+
+
+        .edit-btn:hover {
+            background-color: #555;
+        }
+
+
+        .delete-btn:hover {
+            background-color: #b22222;
+        }
+
+
+        input[type="text"] {
+            width: 90%;
+            padding: 4px;
+            text-align: center;
+            border: 1px solid #888;
+            border-radius: 4px;
+        }
+
+
+        .add-btn {
+    display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #2b7a2b;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+
+        .add-btn:hover {
+             background-color: #246624;
+        }
+       
+</style>
+</head>
+    <body>
+
+
+    <h2>
+        Donation Record Sheet
+    </h2>
+
+
+        <table id="donationTable">
+            <tr>
+                <th>Name of Donor</th>
+                <th>Type of Donation</th>
+                <th>Amount / Quantity</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+
+    <button class="add-btn" onclick="addRow()">+ Add New Donor</button>
+
+
+    <script>
+ 
+        window.onload = function() {
+            const savedData = JSON.parse(localStorage.getItem('donationRecords')) || [];
+
+
+            const table = document.getElementById('donationTable');
+
+
+                 savedData.forEach(record => {
+
+
+                    const newRow = table.insertRow(-1);
+
+
+                    const nameCell = newRow.insertCell(0);
+                    const typeCell = newRow.insertCell(1);
+                    const amountCell = newRow.insertCell(2);
+                    const actionCell = newRow.insertCell(3);
+
+
+      nameCell.textContent = record.name;
+      typeCell.textContent = record.type;
+      amountCell.textContent = record.amount;
+      actionCell.innerHTML = `
+        <button class="action-btn edit-btn" onclick="editRow(this)">EDIT</button>
+        <button class="action-btn delete-btn" onclick="deleteRow(this)">DELETE</button>
+      `;
+    });
+  };
+
+
+  function saveTable() {
+    const table = document.getElementById('donationTable');
+    const rows = table.rows;
+    const records = [];
+
+
+    for (let i = 1; i < rows.length; i++) {
+      const cells = rows[i].cells;
+      records.push({
+        name: cells[0].textContent,
+        type: cells[1].textContent,
+        amount: cells[2].textContent
+      });
+    }
+
+
+    localStorage.setItem('donationRecords', JSON.stringify(records));
+  }
+
+
+  function editRow(button) {
+    const row = button.closest('tr');
+    const cells = row.querySelectorAll('td');
+
+
+    if (button.textContent === 'EDIT') {
+      for (let i = 0; i < cells.length - 1; i++) {
+        const text = cells[i].textContent;
+        cells[i].innerHTML = `<input type="text" value="${text}">`;
+      }
+      button.textContent = 'SAVE';
+      button.style.backgroundColor = '#2b7a2b';
+    } else {
+      for (let i = 0; i < cells.length - 1; i++) {
+        const input = cells[i].querySelector('input');
+        cells[i].textContent = input.value;
+      }
+      button.textContent = 'EDIT';
+      button.style.backgroundColor = '#666';
+      saveTable(); // Save after editing
+    }
+  }
+
+
+  function deleteRow(button) {
+    const row = button.closest('tr');
+    row.remove();
+    saveTable();
+  }
+
+
+  function addRow() {
+    const table = document.getElementById('donationTable');
+    const newRow = table.insertRow(-1);
+
+
+    const nameCell = newRow.insertCell(0);
+    const typeCell = newRow.insertCell(1);
+    const amountCell = newRow.insertCell(2);
+    const actionCell = newRow.insertCell(3);
+
+
+    nameCell.innerHTML = `<input type="text" placeholder="Enter Donor Name">`;
+    typeCell.innerHTML = `<input type="text" placeholder="Type of Donation">`;
+    amountCell.innerHTML = `<input type="text" placeholder="Amount / Quantity">`;
+    actionCell.innerHTML = `
+      <button class="action-btn edit-btn" onclick="saveNewRow(this)">SAVE</button>
+      <button class="action-btn delete-btn" onclick="deleteRow(this)">DELETE</button>
+    `;
+  }
+
+
+  function saveNewRow(button) {
+    const row = button.closest('tr');
+    const cells = row.querySelectorAll('td');
+
+
+    for (let i = 0; i < cells.length - 1; i++) {
+      const input = cells[i].querySelector('input');
+      cells[i].textContent = input.value;
+    }
+
+
+    button.textContent = 'EDIT';
+    button.classList.remove('add-btn');
+    button.classList.add('edit-btn');
+    button.style.backgroundColor = '#666';
+    button.setAttribute('onclick', 'editRow(this)');
+
+
+    saveTable();
+  }
+</script>
+
+
+        </script>
+    </body>
+</html>
