@@ -1,0 +1,158 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Platform</title>
+  <style>
+    body {
+  font-family: sans-serif;
+  margin: 0;
+  background: white;
+  color: #333;
+}
+
+header {
+  background: #632828;
+  color: #fff;
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 20;
+  color: white;
+  justify-content: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+section {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(1, 1, 1, 0.1);
+  text-align: center;
+}
+
+figure {
+  background: #ddd;
+  height: 120px;
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+button {
+  background: green;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(33, 209, 118)
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.logout-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2c672c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.logout-btn:hover {
+  background: #115011;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home.html">Donate</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <img src="logo.jpg" alt="Logo" class="logo">
+    </nav>
+  </header>
+
+  <h1 style="text-align: center; font-size: 60px; color: black;">Welcome to PCC Pastoral Ministry Donation Management</h1><br>
+
+  <main>
+    <section>
+      <h2>Donation 1</h2>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Nm0lwcsZ_p-UE5SSBNSTmsndIRJlsR-nGA&s" alt="image">
+      <p>Donate - You can help even with small amount.</p>
+      <a href="form.html"><button>Donate</button></a>
+      <p><strong>Total Raised: $$</strong></p>
+    </section>
+
+    <section>
+      <h2>Donation 2</h2>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Nm0lwcsZ_p-UE5SSBNSTmsndIRJlsR-nGA&s" alt="image">
+      <p>Donate - You can help even with small amount.</p>
+      <a href="form.html"><button>Donate</button></a>
+      <p><strong>Total Raised: $$</strong></p>
+    </section>
+
+    <section>
+      <h2>Donation 3</h2>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Nm0lwcsZ_p-UE5SSBNSTmsndIRJlsR-nGA&s" alt="image">
+      <p>Donate - You can help even with small amount.</p>
+      <a href="form.html"><button>Donate</button></a>
+      <p><strong>Total Raised: $$</strong></p>
+    </section>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+  </main>
+
+  <script>
+    function logout() {
+    const ok = confirm("Are you sure you want to logout?");
+    if (!ok) return;
+
+    window.location.href = "index.html";
+}
+
+  </script>
+</body>
+</html>
