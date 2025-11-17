@@ -7,6 +7,8 @@
     <style>
         body {
             font-family: "Lato" , sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
 
@@ -17,7 +19,7 @@
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: lightgray;
+            background-color: #632828;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -52,32 +54,63 @@
             .sidenav {padding-top: 15;}
             .sidenav a{font-size: 18px;}
         }
+
+        header {
+            background: #632828;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            margin: 0;
+            padding: 0 1rem;
+        }
+
+        nav h2 {
+            font-size: 20;
+            color: white;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: auto;
+        }
+
+        .back-button {
+            margin-top: 1rem;
+        }
         </style>
     </head>
+        <body>
+        <header>
+            <nav>
+                <span style="font-size: 15px; cursor: pointer;" onclick="openNav()">&#9776; OPEN</span>
+                <center><h2><p><b> Welcome Manager/Admin </b> </p> </h2></center>
+                <img src="logo.jpg" alt="Logo" class="logo">
+            </nav>
+        </header>
 
-
-    <body>
         <div id="MySideNav" class="sidenav">
             <a href="javscript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="adminside.html"> HOME</a>
+            <a href="Admin.html"> HOME</a>
             <a href="OVERVIEW.html"> OVERVIEW </a>
             <a href="TRANSACTION.html"> TRANSACTION </a>
             <a href="MESSAGES.html"> MESSAGES </a>
             <a href="index.html"> Logout </a>
         </div>
-         
-        <h2> Admin side / Manager side </h2>
 
-
-       
-        <span style="font: 30px;cursor: pointer;" onclick="openNav()">&#9776; OPEN</span>
+          <button class="back-button" onclick="history.back()">← Back</button>
 
 
         <script>
             function openNav() {
                 document.getElementById("MySideNav").style.width = "250";
             }
-
 
             function closeNav() {
                 document.getElementById("MySideNav").style.width="0";
@@ -101,24 +134,14 @@
     </title>
     <style>
         body {
-
-
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
         }
 
-
-
-
          h2 {
-
-
             text-align: center;
              margin-top: 30px;
         }
-
-
-
 
         table {
 
@@ -128,9 +151,6 @@
             border-collapse: collapse;
             background-color: #bfbfbf;
         }
-
-
-
 
         th, td {
 
