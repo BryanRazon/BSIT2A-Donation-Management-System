@@ -300,6 +300,9 @@
 
 function showSummary(type) {
   let details = "";
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString();
+
   if (type === 'monetary') {
     const name = document.getElementById('monetaryName').value;
     const amount = document.getElementById('amount').value;
@@ -313,12 +316,14 @@ function showSummary(type) {
       <p><strong>Payment Mode:</strong> ${mode}</p>
       <p><strong>Payment Details:</strong> ${paymentDetails}</p>
       <p><strong>Message:</strong> ${message}</p>
+      <p><strong>Donation Date:</strong> ${formattedDate}</p>
     `;
 
     currentDonor = {
       name: name,
       type: "Monetary",
-      amount: amount
+      amount: amount,
+      date: formattedDate
     };
 
   } else {
@@ -336,12 +341,14 @@ function showSummary(type) {
       <p><strong>Delivery:</strong> ${delivery}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Message:</strong> ${inkindMessage}</p>
+      <p><strong>Donation Date:</strong> ${formattedDate}</p>
     `;
 
     currentDonor = {
       name: name,
       type: "In-Kind",
-      amount: quantity
+      amount: quantity,
+      date: formattedDate
     };
   }
 
