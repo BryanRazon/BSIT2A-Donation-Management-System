@@ -154,7 +154,7 @@ button:hover {
       <label for="password">Password</label>
       <input type="password" id="password" placeholder="Enter your password" required>
 
-      <p class="forgot"><a href="#">Forgot Password?</a></p>
+      <p class="forgot"><a href="#" id="showPasswordForm">Forgot Password?</a></p>
 
       <button type="submit">Login</button>
 
@@ -181,14 +181,36 @@ button:hover {
       <p><a href="#" id="showLogin">Already have an account? Login</a></p>
     </form>
 
+    <form id="passwordForm" style="display:none;">
+      <h2>Forgot your password?</h2>
+      <label>
+        <input type="email" placeholder="Email" required>
+      </label>
+      <label>
+        <input type="password" placeholder="New Password" required>
+      </label>
+      <label>
+        <input type="password" placeholder="Confirm Password" required>
+      </label>
+      <button type="submit">Reset Password</button>
+    </form>
+
+    <form id="adminForm" style="display:none;">
+      <h2>Enter Admin Passcode</h2>
+      <label for="adminPasscode">Passcode</label>
+      <input type="password" id="adminPasscode" placeholder="Enter passcode" required>
+      <button type="submit">Submit</button>
+      <p><a href="#" id="backToFinal">Back</a></p>
+    </form>
+
     <form id="finalForm" style="display:none;">
       <h2>Welcome to PCC Pastoral Ministry Donation Management.</h2>
-      <h1>Are you Donor or a Donation Manager</h1>
+      <h1>Are you Donor or an Admin</h1>
 
       <a href="home.html" class="btn">I am a Donor</a>
-      <a href="Admin.html" class="btn">I am a Donation Manager</a>
-      </p>
+      <a href="#" id="showAdminForm" class="btn">I am an Admin</a>
     </form>
+
   </section>
 </main>
 
@@ -199,6 +221,11 @@ button:hover {
   const finalForm = document.getElementById("finalForm");
   const showSignup = document.getElementById("showSignup");
   const showLogin = document.getElementById("showLogin");
+  const showPasswordForm = document.getElementById("showPasswordForm");
+  const passwordForm = document.getElementById("passwordForm");
+  const adminForm = document.getElementById("adminForm");
+  const showAdminForm = document.getElementById("showAdminForm");
+  const backToFinal = document.getElementById("backToFinal");
 
   showSignup.addEventListener("click", (e) => {
     e.preventDefault();
@@ -222,6 +249,41 @@ button:hover {
     e.preventDefault();
     signupForm.style.display = "none";
     finalForm.style.display = "block";
+  });
+
+  passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    passwordForm.style.display = "none";
+    loginForm.style.display = "block";
+  });
+
+  showPasswordForm.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginForm.style.display = "none";
+    passwordForm.style.display = "block";
+  });
+
+  showAdminForm.addEventListener("click", (e) => {
+    e.preventDefault();
+    finalForm.style.display = "none";
+    adminForm.style.display = "block";
+  });
+
+  backToFinal.addEventListener("click", (e) => {
+    e.preventDefault();
+    adminForm.style.display = "none";
+    finalForm.style.display = "block";
+  });
+
+  adminForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const passcode = document.getElementById("adminPasscode").value;
+
+    if (passcode === "PCCADMIN") {
+      window.location.href = "Admin.html";
+    } else {
+      alert("Incorrect passcode. Please try again.");
+    }
   });
 });
 
