@@ -168,7 +168,7 @@
     <nav>
       <ul>
         <li><a href="home.html">Donate</a></li>
-        <li><a href="#">Community</a></li>
+        <li><a href="inbox.html">Inbox</a></li>
         <li><a href="#">About</a></li>
       </ul>
       <img src="logo.jpg" alt="Logo" class="logo">
@@ -358,9 +358,27 @@ function showSummary(type) {
 }
 
 function confirmDonation() {
+  const name = currentDonor.name;
+  const type = currentDonor.type;
+  const amount = currentDonor.amount;
+  const date = currentDonor.date;
+
+  const message = {
+    name: name,
+    type: type,
+    amount: amount,
+    message: type === 'Monetary' ? `Thank you for your monetary donation of ${amount}.` : `Thank you for donating ${amount} ${type.toLowerCase()} items.`,
+    date: date
+  };
+
+  let messages = JSON.parse(localStorage.getItem('donationMessages')) || [];
+  messages.push(message);
+  localStorage.setItem('donationMessages', JSON.stringify(messages));
+
   document.getElementById('summaryModal').style.display = 'none';
   document.getElementById('successModal').style.display = 'flex';
 }
+
 
 function editDonation() {
   document.getElementById('summaryModal').style.display = 'none';
